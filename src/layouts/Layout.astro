@@ -1,0 +1,21 @@
+---
+import "../styles/index.css";
+import { ClientRouter } from "astro:transitions";
+import * as stylex from "@stylexjs/stylex";
+import { body } from "./Layout.stylex";
+---
+
+<!doctype html>
+<html lang="en" transition:name="root" transition:animate="none">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Store</title>
+        <ClientRouter />
+    </head>
+    <body {...stylex.props(body.root)}>
+        <slot />
+    </body>
+</html>

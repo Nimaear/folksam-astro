@@ -1,0 +1,8 @@
+---
+import * as stylex from "@stylexjs/stylex";
+import { grid } from "./Grid.stylex";
+---
+
+<div {...stylex.props(grid.root)}>
+    <slot />
+</div>

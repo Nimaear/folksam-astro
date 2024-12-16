@@ -1,0 +1,21 @@
+---
+import Grid from "../components/Grid/Grid.astro";
+import Product from "../components/Product/Product.astro";
+import { Products } from "../components/react/Products";
+import Layout from "../layouts/Layout.astro";
+import type { Product as ProductType } from "../types";
+
+const res = await fetch("https://api.escuelajs.co/api/v1/products");
+
+const products: ProductType[] = await res.json();
+---
+
+<script define:vars={{ products }} is:inline>
+    window.__INITIAL_DATA__ = products;
+</script>
+<Layout>
+    <Grid>
+        <Products client:load />
+        <!-- {products.map((product) => <Product product={product} />)} -->
+    </Grid>
+</Layout>

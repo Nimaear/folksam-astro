@@ -1,0 +1,19 @@
+---
+import type { Product } from "../../types";
+import * as stylex from "@stylexjs/stylex";
+import { card } from "./Product.stylex";
+import Stack from "../Stack/Stack.astro";
+
+type Props = {
+    product: Product;
+};
+
+const { product } = Astro.props;
+---
+
+<Stack>
+    <h2>{product.title}</h2>
+    <img src={product.category.image} alt={product.title} />
+    <p>{product.description}</p>
+    <p>{product.price} SEK</p>
+</Stack>

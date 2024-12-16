@@ -1,0 +1,15 @@
+---
+import Product from "../../components/Product/Product.astro";
+import ProductDetail from "../../components/Product/ProductDetail.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const { id } = Astro.params;
+
+const res = await fetch(`https://api.escuelajs.co/api/v1/products/${id}`);
+
+const product = await res.json();
+---
+
+<Layout>
+    <ProductDetail product={product} />
+</Layout>
