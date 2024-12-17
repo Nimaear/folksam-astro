@@ -1,9 +1,9 @@
 import { useStore } from "@nanostores/react";
-import { products } from "../../store/products";
+import { productsStore } from "../../store/products";
 import { Producs } from "./Product";
 
 export const Products = () => {
-  const allProducts = useStore(products);
+  const allProducts = useStore(productsStore);
 
   return (
     <>

@@ -1,21 +1,28 @@
 ---
 import Grid from "../components/Grid/Grid.astro";
-import Product from "../components/Product/Product.astro";
 import { Products } from "../components/react/Products";
 import Layout from "../layouts/Layout.astro";
 import type { Product as ProductType } from "../types";
+import { productsStore } from "../store/products";
+import Product from "../components/Product/Product.astro";
 
 const res = await fetch("https://api.escuelajs.co/api/v1/products");
 
 const products: ProductType[] = await res.json();
+
+productsStore.set(products);
 ---
 
 <script define:vars={{ products }} is:inline>
     window.__INITIAL_DATA__ = products;
 </script>
 <Layout>
+    <h1>React Store</h1>
     <Grid>
-        <Products client:load />
-        <!-- {products.map((product) => <Product product={product} />)} -->
+        <Products />
+    </Grid>
+    <h1>ASTRO Store</h1>
+    <Grid>
+        {products.map((product) => <Product product={product} />)}
     </Grid>
 </Layout>
